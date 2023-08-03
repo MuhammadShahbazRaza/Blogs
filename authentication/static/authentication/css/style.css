@@ -1,0 +1,80 @@
+.ebox{
+    border: 10px;
+    border-radius: 10px solid;
+    padding: 2px;
+    color: rgb(59, 40, 10);
+    line-break: strict;
+    list-style: vertical;
+    font-family: 'Satisfy', cursive;
+
+}
+.nav-anchor{
+    color:aquamarine
+}
+.line{
+    padding: 3px;
+    color:purple;
+}
+.frm{
+    background-color: antiquewhite;
+    color: rgb(59, 40, 10)
+}
+.Anchor{
+    background-color: antiquewhite;
+    color: blueviolet;
+}
+.custom-bg-color {
+    background-color: rgb(2, 14, 48); /* Replace with your preferred color value */
+  }
+.item{
+    color: rgb(132, 171, 34);
+}
+.login{
+    background-color:  rgb(47, 74, 155);
+    font-family: 'Satisfy', cursive;
+}
+.body{
+background-color: white;
+}
+.field{
+    padding-top: 5px;
+    font-family: 'Satisfy', cursive;
+}
+.dont{
+    color: aliceblue;
+    font-family: 'Satisfy', cursive;
+}
+.here{
+    color: white;
+    font-family: 'Satisfy', cursive;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+.jumbotron-custom{
+    background-color: rgb(81, 152, 81);
+    margin-top: 20px;
+}
+.welcome{
+    color:yellow;
+}
+
+@media (min-width: 768px) {
+    .jumbotron h1 {
+        font-size: 4em;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .jumbotron h1 {
+        font-size: 6em;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .jumbotron h1 {
+        font-size: 8em;
+    }
+}

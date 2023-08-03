@@ -1,0 +1,195 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<!-- Start your project here -->
+<style>
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  }
+</style>
+<style>
+  /* ...existing styles... */
+
+  /* Show Password Icon */
+  .show-password-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    color: green;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  /* Password Field Styling when Show Password is toggled */
+  .show-password-toggle.active ~ input[type="password"] {
+    padding-right: 2.5rem;
+  }
+
+  .show-password-toggle.active:before {
+    content: "\f070";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    color: green;
+    font-size: 16px;
+  }
+
+  .show-password-toggle:before {
+    content: "\f06e";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    color: green;
+    font-size: 16px;
+  }
+</style>
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <form method="POST" action="{% url 'Signup' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+                <h2 class="fw-bold mb-2 text-uppercase">SignUp</h2>
+                <p class="text-white-50 mb-5">Please enter all the details</p>
+
+                <div class="form-outline form-dark mb-4 text-white">
+                  <input type="email" id="typeEmail" class="form-control form-control-lg" name="email" onfocus="setLabelColor('emailLabel')" onblur="restoreLabelColor('emailLabel', 'typeEmail')">
+                  <label class="form-label" id="emailLabel" style="color: white" for="typeEmail">Email</label>
+                </div>
+
+                <div class="form-outline form-dark mb-4">
+                  <input type="text" id="typeName" class="form-control form-control-lg" name="username" onfocus="setLabelColor('usernameLabel')" onblur="restoreLabelColor('usernameLabel', 'typeName')">
+                  <label class="form-label" id="usernameLabel" style="color: white" for="typeName">Username</label>
+                </div>
+
+                <div class="show-password form-outline form-dark mb-4">
+                  <input type="password" id="typePassword" class="form-control form-control-lg" name="password" onfocus="setLabelColor('passwordLabel')" onblur="restoreLabelColor('passwordLabel', 'typePassword')" style="text-color: white">
+                  <label class="form-label" id="passwordLabel" style="color: white" for="typePassword">Password</label>
+                  <span class="show-password-toggle show-password-toggle-password" onclick="togglePasswordVisibility('typePassword')"></span>
+                </div>
+
+                <div class="show-password form-outline form-dark mb-4">
+                  <input type="password" id="confirmPassword" class="form-control form-control-lg" name="confirmPassword" onfocus="setLabelColor('confirmPasswordLabel')" onblur="restoreLabelColor('confirmPasswordLabel', 'confirmPassword')" style="text-color: white">
+                  <label class="form-label" id="confirmPasswordLabel" style="color: white" for="confirmPassword">Confirm Password</label>
+                  <span class="show-password-toggle show-password-toggle-confirm" onclick="togglePasswordVisibility('confirmPassword')"></span>
+                </div>
+
+                <div class="form-outline form-dark mb-4">
+                  <input type="file" id="profile_pic" class="form-control form-control-lg" name="profile_pic" style="text-color: white">
+                  <label class="form-label" style="color: white" for="profile_pic">Profile Picture</label>
+                </div>
+
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">SignUp</button>
+
+                {% if error %}
+                  <p>{{ error }}</p>
+                {% endif %}
+
+                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                  <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                  <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                  <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                </div>
+              </form>
+            </div>
+
+            <div>
+              <p class="mb-0">Have an account? <a href="{% url 'login' %}" class="text-white-50 fw-bold">Login</a></p>
+            </div>
+            <div>
+              <p class="mb-0">Back to Home <a href="{% url 'home' %}" class="text-white-50 fw-bold">Home</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setLabelColor(labelId) {
+    const label = document.getElementById(labelId);
+    label.style.color = "orange";
+  }
+
+  function restoreLabelColor(labelId, inputId) {
+    const label = document.getElementById(labelId);
+    const input = document.getElementById(inputId);
+    if (input.value === "") {
+      label.style.color = "black";
+    }
+  }
+  function restoreLabelColor(labelId, inputId) {
+  const label = document.getElementById(labelId);
+  const input = document.getElementById(inputId);
+  if (input.value === "") {
+    label.style.color = "black";
+  } else {
+    label.style.color = "white";
+    input.style.color = "white";
+  }
+}
+  var emailInput = document.getElementById('typeEmail');
+  var emailLabel = document.querySelector('label[for="typeEmail"]');
+
+  emailInput.addEventListener('focus', function() {
+    emailInput.style.backgroundColor = '';
+    emailInput.style.color = '';
+    emailLabel.style.color = 'black';
+  });
+
+  var nameInput = document.getElementById('typeName');
+  var nameLabel = document.querySelector('label[for="typeName"]');
+
+  nameInput.addEventListener('focus', function() {
+    nameInput.style.backgroundColor = '';
+    nameInput.style.color = '';
+    nameLabel.style.color = 'black';
+  });
+
+  var passwordInput = document.getElementById('typePassword');
+  var passwordLabel = document.querySelector('label[for="typePassword"]');
+
+  passwordInput.addEventListener('focus', function() {
+    passwordInput.style.backgroundColor = '';
+    passwordInput.style.color = '';
+    passwordLabel.style.color = 'black';
+  });
+
+  var confirmInput = document.getElementById('confirmPassword');
+  var confirmLabel = document.querySelector('label[for="confirmPassword"]');
+
+  confirmInput.addEventListener('focus', function() {
+    confirmInput.style.backgroundColor = '';
+    confirmInput.style.color = '';
+    confirmLabel.style.color = 'black';
+  });
+
+  // Rest of the code...
+
+</script>
+
+{% endblock %}
+
+{% block navbar %}
+
+{% endblock navbar %}

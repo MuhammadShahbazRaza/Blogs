@@ -1,0 +1,35 @@
+{% extends 'authentication/posts.html' %}
+{% load static %}
+{% block allblogs %}
+<link rel="stylesheet" href="{% static  'authentication/css/blogs.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-pzjw7vvUuHp4tZgk5C+XvtAEjsOvyuZTQ2kU6A1jGAPAJ4u3Tqouo7nhg+R/5+G2" crossorigin="anonymous" />
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            {% for blog in blogs %}
+            <div class="card-group card-custom">
+                <div class="card">
+                    {% if blog.image %}
+                    <img src="{{ blog.image.url }}" class="card-img-top" alt="...">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <h5 class="card-title">{{ blog.category }}</h5>
+                        <p class="card-text">{{ blog.content }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="like-icon">
+                            <form method="POST" action="{% url 'like_blog' blog.id %}">
+                                {{ blog.likes.count }}
+                                <button type="submit"><i class="bi bi-heart"></i></button>
+                            </form>
+                        </span>
+                        <small class="text-muted">{{ blog.date_posted }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock allblogs %}

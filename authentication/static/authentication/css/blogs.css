@@ -1,0 +1,92 @@
+body {
+    background-image: url("{% static 'authentication/images/xandtor-vmKczlvO12A-unsplash.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.custom-section{
+    width: 100%;
+    height: 40%;
+    margin-top:10%;
+    padding: auto;
+    margin-bottom: 30%;
+    background:linear-gradient(rgb(114, 126, 114), rgb(172, 172, 165), rgb(108, 108, 181))
+}
+.img-fluid{
+    max-width: 599px;
+    max-height: 800px;
+    border: none;
+    border-radius: 50%;
+}
+.card-custom{
+    width: 600px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.cont-form{
+    background-color: rgb(189, 231, 244);
+    border: none;
+    border-radius: 20px;
+    margin-top: 15%;
+    margin-left:20%;
+    margin-bottom: 10%;
+    margin-top: 5%;
+    height: 60%;
+    width:60%;
+    justify-content: center;
+    padding-top: 40px;
+}
+.labelc{
+    font-size: 1em;
+    justify-content: center;
+    display: flex;
+    margin: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5sec ease-in-out;
+    color: #040405;
+    padding-top: 5px;
+    margin-bottom: 0%;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+.inputc{
+  height: 40%;
+  width: 60%;
+  background: rgba(243, 243, 247, 0.895);
+  justify-content: center;
+  display: flex;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: auto;
+  color:#060303;
+  margin-bottom: 3%;
+}
+.button-c{
+    width: 77px;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #6996f7;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top:0;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    transition: 2sec ease-in-out;
+    cursor: hand;
+    padding: auto;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+  }
+.b-body {
+        height: 70vh;
+}
+
+  

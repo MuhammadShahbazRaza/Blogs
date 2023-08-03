@@ -1,0 +1,81 @@
+{% extends 'authentication/posts.html' %}
+{% load static %}
+{% block detail %}
+<style>
+body {
+        background-image: url("{% static 'authentication/images/xandtor-vmKczlvO12A-unsplash.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Add more CSS styles as needed */
+    }
+</style>
+<div class="container">
+        <div class="row">
+                <div class="col-6 offset-2">
+                    <div class="card">
+                        <div class="image-container">
+                            {% if blog.image %}
+                                <img src="{{ blog.image.url }}" alt="...">
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ blog.title }}</h5>
+                            <p class="card-text">{{ blog.content }}</p>
+                            <p class="card-text">{{ blog.code }}</p>
+                        </div>
+                        <div class="card-footer footer">
+                             <div class="d-flex justify-content-between align-items-center">
+    <div>
+        <form id="likeForm" method="POST" action="{% url 'like_blog' blog.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="blog_id" value="{{ blog.id }}">
+            <span style="color:black; margin-left:23px"id="likeCount">{{ blog.likes.count }}</span>
+            <button type="submit" class="like-button" id="likeButton"><i class="bi bi-heart"></i></button>
+        </form>
+    </div>
+    <small class="text-muted" id="datePosted">{{ blog.date_posted }}</small>
+    <small class="text-muted" id="timePosted">{{ blog.time_posted }}</small>
+    <div class="user-profile">
+        <span style="margin-left:80px;padding-left: 30px; color:black">Posted By: {{ blog.user.username }}
+        <a name="back" id="back" class="btn btn-primary" href="{% url 'blog_list'%}" role="button">Back</a>
+        </span>
+    </div>
+</div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+<script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const likeForm = document.getElementById('likeForm');
+        const likeButton = document.getElementById('likeButton');
+        const likeCount = document.getElementById('likeCount');
+
+        likeForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission
+
+            const formData = new FormData(likeForm);
+            const blogId = formData.get('blog_id');
+
+            fetch(likeForm.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error); // Show error message if user cannot like their own post
+                } else {
+                    likeCount.textContent = data.like_count; // Update the like count
+                    likeButton.classList.toggle('liked'); // Toggle the appearance of the like button if needed
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+{% endblock %}

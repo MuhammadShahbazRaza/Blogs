@@ -1,0 +1,106 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-color:navy; padding-bottom:10px;margin-top: 20px; padding-top: 20px">
+  <div class="container">
+   <h4 class="display-1 welcome" style="text-align: left; margin-top:40px; color: white">Welcome To Tech Blog</h4>
+    <p class="lead text-white">This is a simple Jumbotron example in Django. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+    <p class="text-white">It uses Bootstrap to style the content and layout.</p>
+    <div class="row">
+        <div class="col-sm-1 d-flex align-items-center justify-content-center" style="margin-right: 40px; margin-left: 30px">
+      <a class="btn btn-primary btn-lg text-center" style="border: 2px solid; background-color: blue; width: 160px; height: 50px; margin-left: 30px; margin-top: 0px;" href="{% url 'login' %}" role="button">Login</a>
+    </div>
+    <div class="col-sm-1 d-flex align-items-center justify-content-center" style="margin-right: 40px; margin-left: 30px">
+      <a class="btn btn-primary btn-lg text-center" style="border: 2px solid; background-color: blue; width: 160px; height: 50px; margin-left: 30px; margin-top: 0px;" href="{% url 'Signup' %}" role="button">Signup</a>
+    </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4" style="padding-top:20px">
+      <!-- First Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-black" style="text-align: center">Java</h5>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="text-center">
+            <a href="{% url 'Signup' %}" class="btn btn-primary" style="background-color: green">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" style="padding-top:20px">
+      <!-- Second Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-black" style="text-align: center">Python</h5>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="text-center">
+            <a href="{% url 'Signup' %}" class="btn btn-primary" style="background-color: green">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" style="padding-top: 20px">
+      <!-- Third Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-black" style="text-align: center">Python</h5>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="text-center">
+            <a href="{% url 'Signup' %}" class="btn btn-primary" style="background-color: green">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4" style="padding-top: 20px">
+      <!-- Fourth Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-black" style="text-align: center">Java</h5>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="text-center">
+            <a href="{% url 'Signup' %}" class="btn btn-primary" style="background-color: green">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" style="padding-top:20px">
+      <!-- Fifth Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-black" style="text-align: center">Python</h5>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="text-center">
+            <a href="{% url 'Signup' %}" class="btn btn-primary" style="background-color: green">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" style="padding-top:20px">
+      <!-- Sixth Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-black" style="text-align: center">Python</h5>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text text-black">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="text-center">
+            <a href="{% url 'Signup' %}" class="btn btn-primary" style="background-color: green">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

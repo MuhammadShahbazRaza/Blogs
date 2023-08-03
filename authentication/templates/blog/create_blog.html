@@ -1,0 +1,75 @@
+{% extends 'authentication/posts.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Blog</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'authentication/css/cards.css' %}"> {% endcomment %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+{% block c-form %}
+<style>
+body {
+        background-image: url("{% static 'authentication/images/xandtor-vmKczlvO12A-unsplash.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Add more CSS styles as needed */
+    }
+</style>
+    <div class="c-body"  style="margin-top: 70px">
+        <div class="main" style="margin-top: 70px">
+            <div class="create-blog" style="background-color: rgb(189, 231, 244);align-items:center; justify-content:center">
+                <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data" style="align-items:center">
+                    <label id="chk">Create Blog</label>
+                    <label for="cars" id="cat">Categories</label>
+                    <select name="category" id="cars">
+                        <option value="Python">Python</option>
+                        <option value="Html">Html</option>
+                        <option value="Css">Css</option>
+                        <option value="Javascript">JavaScript</option>
+                        <option value="Java">Java</option>
+                        <option value="C++">C++</option>
+                        <option value=".Net">.NET</option>
+                    </select>
+                    <label>Title</label>
+                    <input name="title" type="text">
+                    <label for="content">Content/Code</label>
+                    <div>
+                    <button style="width:40%; margin-left:-1%" onclick="generateContent()" style="margin-left:40%">Generate Automatically</button>
+                    </div>
+                    <textarea name="content" id="content" {% if user.is_premium %}placeholder="Click 'Generate Automatically' to generate content"{% endif %} required></textarea>
+                    <label for="image">Image</label>
+                    <input name="image" type="file" id="image">
+                    <button style="margin-right:30%" type="submit" name='create' value='Create'>Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateContent() {
+            const category = document.getElementById('cars').value;
+            const title = document.getElementsByName('title')[0].value;
+
+            $.ajax({
+                url: '{% url 'premium' %}',
+                type: 'POST',
+                data: {
+                    'category': category,
+                    'title': title,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(data) {
+                    document.getElementById('content').value = data.content;
+                    document.getElementById('code').value = data.code;
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+    </script>
+{% endblock %}
+</html>

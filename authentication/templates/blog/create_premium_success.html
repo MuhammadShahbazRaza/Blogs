@@ -1,0 +1,10 @@
+{% extends 'authentication/posts.html' %}
+{% include 'blog/navbar.html' with profile_pic=navbar_context.profile_pic name=navbar_context.name %}
+{% block allblogs %}
+    <!-- Content specific to the template extending posts.html -->
+
+<p>{{ content }}</p>
+<code>{{ code }}</code>
+                    
+    
+{% endblock %}

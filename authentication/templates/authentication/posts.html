@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Tech Blog</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'authentication/css/posts.css' %}">
+  <link rel="stylesheet" href="{% static 'authentication/css/cards.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="{% static 'authentication/css/blogs.css' %}">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+{% include 'blog/navbar.html' with profile_pic=profile_pic username=username %}
+{% block c-form %}
+{% endblock %}
+{% block editcontent %}
+{% endblock %}
+{% block allblogs %}
+{% endblock %}
+{% block contact %}
+{% endblock %}
+{% block detail %}
+{% endblock %}
+{% block d-form %}
+{% endblock %}
+{% block allpremium %}
+{% endblock %}
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+const createBlogLink = document.getElementById('create-blog-link');
+const createBlogForm = document.getElementById('create-blog-form');
+
+// Add event listener to the link
+createBlogLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  // Toggle the visibility of the form
+  if (createBlogForm.style.display === 'none') {
+    createBlogForm.style.display = 'block';
+  } else {
+    createBlogForm.style.display = 'none';
+  }
+});
+
+// Prevent form submission
+const blogForm = document.getElementById('blog-form');
+blogForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // Add your form submission logic here
+});
+function myfun(){
+  console.log("dsfkdsfkjdshfkjdhsfkjhdskjf");
+}
+
+</script>
+</body>
+</html>

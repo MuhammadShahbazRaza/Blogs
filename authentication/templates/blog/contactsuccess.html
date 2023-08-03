@@ -1,0 +1,20 @@
+{% extends 'authentication/posts.html' %}
+{% load static %}
+{% block contact %}
+<style>
+body {
+        background-image: url("{% static 'authentication/images/xandtor-vmKczlvO12A-unsplash.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Add more CSS styles as needed */
+     }
+</style>
+<div class="container" style="background:green; margin-top: 5px">
+  <div class="row">
+    <div class="col-4 offset-3" style="margin-left:430px; margin-top: 120px">
+     <h1>Thank You!</h1>
+      <p>Your message has been submitted successfully.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,182 @@
+{% extends 'authentication/posts.html' %}
+{% load static %}
+{% block editcontent %}
+
+<!-- Start your project here -->
+
+<!-- Start your project here -->
+<style>
+  body {
+        background-image: url("{% static 'authentication/images/xandtor-vmKczlvO12A-unsplash.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Add more CSS styles as needed */
+    }
+</style>
+<style>
+  /* ...existing styles... */
+
+  /* Show Password Icon */
+  .show-password-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    color: green;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  /* Password Field Styling when Show Password is toggled */
+  .show-password-toggle.active ~ input[type="password"] {
+    padding-right: 2.5rem;
+  }
+
+  .show-password-toggle.active:before {
+    content: "\f070";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    color: green;
+    font-size: 16px;
+  }
+
+  .show-password-toggle:before {
+    content: "\f06e";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    color: green;
+    font-size: 16px;
+  }
+  .photo-container {
+  position: relative;
+}
+
+.photo-icon {
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+  bottom:0%
+  transform: translateX(-50%);
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+  border:none;
+  margin-bottom:-8px;
+  width: 20px;
+}
+
+.photo-icon i {
+  font-size: 20px;
+}
+
+</style>
+{% comment %}
+<script>
+  function togglePasswordVisibility(inputId) {
+    const passwordInput = document.getElementById(inputId);
+    const passwordToggle = document.querySelector(`.show-password-toggle-${inputId}`);
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      passwordToggle.classList.add("active");
+    } else {
+      passwordInput.type = "password";
+      passwordToggle.classList.remove("active");
+    }
+  }
+
+  function setLabelColor(labelId) {
+    const label = document.getElementById(labelId);
+    label.style.color = "green";
+  }
+
+  function restoreLabelColor(labelId, inputId) {
+    const label = document.getElementById(labelId);
+    const input = document.getElementById(inputId);
+
+    if (input.value === "") {
+      label.style.color = "white";
+    }
+  }
+</script>
+{% endcomment %}
+<section class="vh-100 gradient-custom" style="margin-top:50px;margin-bottom:17%; height: 60%">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-110">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card  text-white" style="border-radius: 1rem; height: 70%; width:600px; border: none; background-color: rgb(189, 231, 244); margin-right:1020px; justify-content: center; align-items:center">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+            <form method="POST" action="{% url 'edituser' %}" enctype="multipart/form-data" style="font-family:'Times New Roman', Times, serif; font-style:italic; padding:auto; height:550px; width: 500px; margin-right:10%">
+  {% csrf_token %}
+  {% if user.profile_pic %}
+  <div class="position-relative mb-4">
+    <div class="photo-container">
+      <img class="profile" src="{{ user.profile_pic.url }}" alt="Profile Picture" style="height: 100px; width:100px; border-radius: 50%">
+      <label for="profile_pic" class="photo-icon">
+        <i class="bi bi-camera-fill"></i>
+      </label>
+    </div>
+    <input type="file" id="profile_pic" class="form-control form-control-lg edit-input" name="profile_pic" style="display: none;">
+  </div>
+  {% endif %}
+  <h2 class="fw-bold mb-2 text-uppercase" style="color:black">{{username}}</h2>
+
+  <p class="text-white-50 mb-5"></p>
+  <div class="form-outline form-dark mb-4 text-white">
+    <label class="form-label" id="emailLabel" style="" for="typeEmail">Email</label>
+    <input style="margin-left:-1%"type="email" id="typeEmail" class="form-control form-control-lg edit-input" name="email" onfocus="setLabelColor('emailLabel')" onblur="restoreLabelColor('emailLabel', 'typeEmail')" value="{{user.email}}">
+  </div>
+  <div class="form-outline form-dark mb-4">
+    <label class="form-label" id="usernameLabel" style="color: black;" for="typeName">Username</label>
+    <input style="margin-left:-1%" type="text" id="typeName" class="form-control form-control-lg edit-input" name="username" onfocus="setLabelColor('usernameLabel')" onblur="restoreLabelColor('usernameLabel', 'typeName')" value="{{user.username}}">
+  </div>
+  <div class="show-password form-outline form-dark mb-4">
+    <label class="form-label" id="passwordLabel" style="color: black" for="typePassword">Password</label>
+    <input type="text" id="typePassword" class="form-control form-control-lg edit-input" name="password" onfocus="setLabelColor('passwordLabel')" onblur="restoreLabelColor('passwordLabel', 'typePassword')" style="color: black; margin-left:-1%" value="{{user.password}}">
+  </div>
+  
+  <div class="d-grid">
+    <button class="btn btn-outline-light btn-lg px-5 button-custom" type="submit" style="margin-left:25%; margin-top:-1%">Edit</button>
+  </div>
+
+  {% if error %}
+  <p>{{ error }}</p>
+  {% endif %}
+</form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</section>
+<script>
+  function openImageField() {
+    document.getElementById('profilePicUpload').click();
+  }
+
+  const profilePicUpload = document.getElementById('profilePicUpload');
+  const profilePicPreview = document.getElementById('profilePicPreview');
+
+  profilePicUpload.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      profilePicPreview.src = reader.result;
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
