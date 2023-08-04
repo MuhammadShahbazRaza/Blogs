@@ -307,10 +307,7 @@ def premium_user_view(request):
                     content = content[:code_start_index].strip()
 
             # Set the user_id before creating the Blog instance
-        blog_post = Blog(title=title, content=content, category=category, code=code, user_id=id)
-        blog_post.save()
-
-        return JsonResponse({'content': content, 'code': code})
+            return JsonResponse({'content': content, 'code': code})
 
         return render(request, 'blog/create_blog.html')
 
